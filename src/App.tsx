@@ -7,7 +7,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './components/Body';
 
-const logoUrl = '/logo.svg';
 const headerData = Messages.header;
 const footerData = Messages.footerData;
 
@@ -58,6 +57,7 @@ function App() {
       <main style={{ flex: 1, width: '100%' }}>
         <Body />
       </main>
+      
       <Footer {...{ ...footerData, location: safeLocation(footerData.location) }} />
     </View>
   );
