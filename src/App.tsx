@@ -1,7 +1,7 @@
 // src/App.tsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './index.css';
-import { ThemeProvider, View } from '@aws-amplify/ui-react';
+import { View } from '@aws-amplify/ui-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './components/Body';
