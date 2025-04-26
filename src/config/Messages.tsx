@@ -1,0 +1,40 @@
+export const Messages = {
+    title: 'Biometric App',
+    icon: '/logo.svg',
+    buttonColor: 'green',
+    buttonBorderColor: 'green',
+    header: {
+        url: '/logoexampleblanco_480.png',
+        location: 'left',
+        bgColor: '#0C6069',
+        content: ''
+    },
+    footerData: {
+        "content": `
+        <table style="margin: 10px auto; background-color: #0C6069;">
+          <tbody>
+            <tr>
+              <td style="text-align: center;">
+                <div style="font-weight: 300; font-size: 10px; color: #585858; font-family: Helvetica, serif;">
+                  <div>
+                    <a href="https://examplecompany.com" target="_blank" style="font-size: 17px; font-weight: 300; color: #fff; text-decoration: none; font-family: Helvetica, serif;">
+                      www.examplecompany.comc
+                    </a>
+                  </div>
+                  <div style="font-size: 11px; color: #fff;">
+                    <p style="font-size: 12px; color: #fff;">
+                      <a href="https://examplecompany.com/" style="color: #fff; text-decoration: none; font-family: Helvetica, serif;">
+                        Políticas de privacidad
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      `,
+        "location": "center",
+        "bgColor": "#0C6069"
+    }
+};

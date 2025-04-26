@@ -23,9 +23,7 @@ footer {
   width: 100%;
 }
 
-.header {
-  flex-direction: row;
-}
+/* Eliminamos .header y sus media queries */
 
 .body-grid {
   display: grid;
@@ -41,14 +39,5 @@ footer {
 @media (max-width: 480px) {
   .body-grid {
     grid-template-columns: 1fr;
-  }
-
-  .header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .header img {
-    margin-bottom: 0.5rem;
   }
 }
