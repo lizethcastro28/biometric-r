@@ -3,24 +3,34 @@ import React from 'react';
 import { View } from '@aws-amplify/ui-react';
 
 interface FooterProps {
-  content: string;
-  bgColor: string;
+    content: string;
+    bgColor: string;
+    location: 'left' | 'center' | 'right';
 }
 
-const Footer: React.FC<FooterProps> = ({ content, bgColor }) => {
-  return (
-    <View
-      as="footer"
-      style={{
-        backgroundColor: bgColor,
-        padding: '1rem',
-        textAlign: 'center',
-        width: '100%',
-        boxSizing: 'border-box',
-      }}
-      dangerouslySetInnerHTML={{ __html: content }}
-    />
-  );
+const justifyContentMap = {
+    left: 'flex-start',
+    center: 'center',
+    right: 'flex-end',
+};
+
+const Footer: React.FC<FooterProps> = ({ content, bgColor, location }) => {
+    return (
+        <View
+            as="footer"
+            style={{
+                backgroundColor: bgColor,
+                padding: '1rem',
+                textAlign: 'center',
+                width: '100%',
+                display: 'flex',
+                justifyContent: justifyContentMap[location],
+                boxSizing: 'border-box',
+            }}
+        >
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+        </View>
+    );
 };
 
 export default Footer;

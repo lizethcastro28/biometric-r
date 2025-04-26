@@ -9,6 +9,12 @@ interface HeaderProps {
   location: 'left' | 'center' | 'right';
 }
 
+const justifyContentMap = {
+  left: 'flex-start',
+  center: 'center',
+  right: 'flex-end',
+};
+
 const Header: React.FC<HeaderProps> = ({ content, url, bgColor, location }) => {
   return (
     <View
@@ -17,12 +23,12 @@ const Header: React.FC<HeaderProps> = ({ content, url, bgColor, location }) => {
       style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: location,
+        justifyContent: justifyContentMap[location],
         backgroundColor: bgColor,
         width: '100%',
         padding: '1rem',
         boxSizing: 'border-box',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
       }}
     >
       <img src={url} alt="Logo" style={{ height: '40px', marginRight: '1rem' }} />
