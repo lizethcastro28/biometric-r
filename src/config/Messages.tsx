@@ -1,3 +1,5 @@
+import Instructions from "../components/Instructions";
+
 export const Messages = {
     title: 'Biometric App',
     icon: '/logo.svg',
@@ -36,5 +38,15 @@ export const Messages = {
       `,
         "location": "center",
         "bgColor": "#0C6069"
-    }
+    },
+    instructionsPage: {
+        title: "Realizaremos una verificación facial para confirmar que estás presente ahora y no se trata de una grabación ¡Es rápido y sencillo!",
+        description: "Sigue las Instrucciones para completar la verificación",
+        accion : "Continuar",
+        instructions: [
+            { title: '1. Documento', description: 'Coloca tu documento de identidad frente a la cámara' },
+            { title: '2. Prueba de vida', description: 'Coloca tu rostro frente a la cámara' },
+            { title: '3. Prueba de vida y firma', description: 'Coloca tu rostro frente a la cámara y espera a que se procese la firma biométrica' },
+        ]
+    },
 };
