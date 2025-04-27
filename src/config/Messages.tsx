@@ -1,5 +1,3 @@
-import Instructions from "../components/Instructions";
-
 export const Messages = {
     title: 'Biometric App',
     icon: '/logo.svg',
