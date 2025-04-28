@@ -23,13 +23,10 @@ const Body: React.FC<BodyProps> = ({ Messages }) => {
       className="body-grid"
       gap="1rem"
       width="100%"
-      style={{
-        padding: '1rem',
-        boxSizing: 'border-box',
-        gridTemplateColumns: '1fr 2fr 1fr',
-      }}
+      padding="1rem"
+      templateColumns={{ base: '1fr', medium: '1fr 2fr 1fr' }}
     >
-      <View style={{ backgroundColor: 'lightblue', padding: '1rem' }}>
+      <View backgroundColor="lightblue" padding="1rem">
         Columna 1
       </View>
 
@@ -38,9 +35,7 @@ const Body: React.FC<BodyProps> = ({ Messages }) => {
           Hola Lorena
         </Heading>
 
-        <View marginBottom="1rem">
-          <Divider orientation="horizontal" size="large" />
-        </View>
+        <Divider orientation="horizontal" size="large" marginBottom="1rem" />
 
         {currentStep === 'instructions' && (
           <Instructions
@@ -63,7 +58,7 @@ const Body: React.FC<BodyProps> = ({ Messages }) => {
         )}
       </View>
 
-      <View style={{ backgroundColor: 'lightcoral', padding: '1rem' }}>
+      <View backgroundColor="lightcoral" padding="1rem">
         Columna 3
       </View>
     </Grid>

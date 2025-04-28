@@ -44,7 +44,6 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
         }
     };
 
-
     const downloadSignature = (base64: string): void => {
         const link = document.createElement('a');
         link.href = base64;
@@ -56,30 +55,29 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
     };
 
     return (
-        <div>
-            <Heading level={2} style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <Flex direction="column" gap="large" width="100%" maxWidth="800px" margin="auto">
+            <Heading level={2} textAlign="center" marginBottom="1rem">
                 {Messages.signaturePadPage.title}
             </Heading>
 
-            <Flex direction="column" gap="large" width="100%" maxWidth="800px" margin="auto">
+            <Message
+                colorTheme={messageType}
+                heading={message}
+                variation="filled"
+                width="100%"
+                textAlign="center"
+                wrap="wrap"
+            />
 
-                {/* Solo un Message */}
-                <Message
-                    className="my-message"
-                    colorTheme={messageType}
-                    heading={message}
-                    variation="filled"
-                    width="100%"
-                    textAlign="center"
-                    wrap="wrap"
-                />
-
+            <div style={{ width: '100%', overflow: 'hidden' }}>
                 <SignatureCanvas
                     penColor="black"
                     canvasProps={{
-                        width: 600,
+                        width: 0, // No establezcas el ancho fijo aquí
                         height: 200,
                         style: {
+                            width: '100%', // Aquí es clave
+                            height: '200px',
                             border: '2px dashed #cbd5e0',
                             borderRadius: '12px',
                             backgroundColor: '#fff',
@@ -87,17 +85,17 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
                     }}
                     ref={sigCanvas}
                 />
+            </div>
 
-                <Flex direction="row" gap="1rem" marginTop="1rem" justifyContent="center">
-                    <Button variation="destructive" onClick={clear}>
-                        {Messages.signaturePadPage.buttons.clear}
-                    </Button>
-                    <Button backgroundColor={Messages.buttonColor} variation="primary" onClick={save}>
-                        {Messages.signaturePadPage.buttons.accept}
-                    </Button>
-                </Flex>
+            <Flex direction="row" gap="1rem" marginTop="1rem" justifyContent="center">
+                <Button variation="destructive" onClick={clear}>
+                    {Messages.signaturePadPage.buttons.clear}
+                </Button>
+                <Button backgroundColor={Messages.buttonColor} variation="primary" onClick={save}>
+                    {Messages.signaturePadPage.buttons.accept}
+                </Button>
             </Flex>
-        </div>
+        </Flex>
     );
 };
 
