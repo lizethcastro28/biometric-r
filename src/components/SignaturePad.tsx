@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
-import { Button, Heading, View, Flex, Message } from '@aws-amplify/ui-react';
+import { Button, Heading, Flex, Message } from '@aws-amplify/ui-react';
 import { trimCanvas } from '../utils/trimCanvas';
 
 interface SignaturePadProps {
@@ -48,6 +48,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
     const downloadSignature = (base64: string): void => {
         const link = document.createElement('a');
         link.href = base64;
+        console.log(trimmedDataURL);
         /*link.download = `firma-${new Date().toISOString()}.png`;
         document.body.appendChild(link);
         link.click();
