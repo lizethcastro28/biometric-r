@@ -7,8 +7,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './components/Body';
 
+
 const headerData = Messages.header;
-const footerData = Messages.footerData;
+const footerData = Messages.footer;
 
 function changeTitle() { document.title = Messages.title; }
 function changeIcon() {
@@ -17,10 +18,7 @@ function changeIcon() {
     (linkIcon as HTMLLinkElement).href = Messages.icon;
   }
 }
-function changeButtonColor(newColor: string) {
-  document.documentElement.style.setProperty('--button-background-color', newColor);
-  document.documentElement.style.setProperty('--button-border-color', newColor);
-}
+
 const safeLocation = (value: string): 'left' | 'center' | 'right' => {
   if (value === 'left' || value === 'center' || value === 'right') {
     return value;
@@ -32,11 +30,10 @@ function App() {
   useEffect(() => {
     changeTitle();
     changeIcon();
-    changeButtonColor('green');
   }, []);
 
   return (
-    <ThemeProvider> {/* <= envolvemos toda la app */}
+    <ThemeProvider>
       <View
         style={{
           display: 'flex',

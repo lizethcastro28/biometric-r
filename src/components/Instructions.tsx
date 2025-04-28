@@ -82,7 +82,7 @@ const Instructions: React.FC<AlertComponentProps> = ({
                 </Collection>
 
                 <View style={{ marginTop: '2rem', textAlign: 'center' }}>
-                    <Button variation="primary" onClick={onContinue}>
+                    <Button backgroundColor={Messages.buttonColor} variation="primary" onClick={onContinue}>
                         {Messages.instructionsPage.accion}
                     </Button>
                 </View>
