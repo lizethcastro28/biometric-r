@@ -45,13 +45,15 @@ function App() {
           boxSizing: 'border-box',
         }}
       >
-        <Header {...{ ...headerData, location: safeLocation(headerData.location) }} />
-
+        <Header headerData={{ ...headerData, location: safeLocation(headerData.location) }} />
+        
         <main style={{ flex: 1, width: '100%' }}>
           <Body Messages={Messages} />
         </main>
 
-        <Footer {...{ ...footerData, location: safeLocation(footerData.location) }} />
+        <Footer footerData={{ ...footerData, location: safeLocation(footerData.location) }} />
+
+
       </View>
     </ThemeProvider>
   );

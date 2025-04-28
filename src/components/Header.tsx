@@ -2,11 +2,15 @@
 import React from 'react';
 import { View } from '@aws-amplify/ui-react';
 
-interface HeaderProps {
+interface HeaderData {
   content: string;
   url: string;
   bgColor: string;
   location: 'left' | 'center' | 'right';
+}
+
+interface HeaderProps {
+  headerData: HeaderData;
 }
 
 const justifyContentMap = {
@@ -15,7 +19,7 @@ const justifyContentMap = {
   right: 'flex-end',
 };
 
-const Header: React.FC<HeaderProps> = ({ content, url, bgColor, location }) => {
+const Header: React.FC<HeaderProps> = ({ headerData: { content, url, bgColor, location } }) => {
   return (
     <View
       as="header"
