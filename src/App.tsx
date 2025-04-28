@@ -6,7 +6,7 @@ import { Messages } from './config/Messages';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Body from './components/Body';
-
+import Theme from './config/CustomTheme';
 
 const headerData = Messages.header;
 const footerData = Messages.footer;
@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={Theme}>
       <View
         style={{
           display: 'flex',

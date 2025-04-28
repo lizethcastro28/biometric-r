@@ -42,7 +42,27 @@ export const Messages = {
   instructionsPage: {
     title: "Realizaremos una verificación facial para confirmar que estás presente ahora y no se trata de una grabación ¡Es rápido y sencillo!",
     description: "Sigue las Instrucciones para completar la verificación",
-    accion: "Continuar",
+    buttons: {
+      continue: "Continuar"
+    },
+    instructions: [
+      { title: '1. Documento', description: 'Coloca tu documento de identidad frente a la cámara' },
+      { title: '2. Prueba de vida', description: 'Coloca tu rostro frente a la cámara' },
+      { title: '3. Prueba de vida y firma', description: 'Coloca tu rostro frente a la cámara y espera a que se procese la firma biométrica' },
+    ]
+  },
+  signaturePadPage: {
+    title: "Firma a mano alzada",
+    description: "Por favor, firma en el área designada",
+    buttons: {
+      accept: "Guardar",
+      clear: "Limpiar"
+    },
+    messages:{
+      initial: "Por favor, firma en el área designada",
+      error: "Por favor, realiza una firma antes de guardar.",
+      success: "Firma guardada correctamente."
+    },
     instructions: [
       { title: '1. Documento', description: 'Coloca tu documento de identidad frente a la cámara' },
       { title: '2. Prueba de vida', description: 'Coloca tu rostro frente a la cámara' },

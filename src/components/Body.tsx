@@ -1,17 +1,21 @@
-// src/components/Body.tsx
 import React, { useState } from 'react';
-import { Grid, View } from '@aws-amplify/ui-react';
+import { Grid, View, Heading, Divider } from '@aws-amplify/ui-react';
 import Instructions from '../components/Instructions';
+import SignaturePad from '../components/SignaturePad';
 
 interface BodyProps {
   Messages: any;
 }
 
 const Body: React.FC<BodyProps> = ({ Messages }) => {
-  const [showInstructions, setShowInstructions] = useState(true);
+  const [currentStep, setCurrentStep] = useState<'instructions' | 'signature' | 'finished'>('instructions');
 
   const handleContinue = () => {
-    setShowInstructions(false);
+    setCurrentStep('signature');
+  };
+
+  const handleSignatureComplete = () => {
+    setCurrentStep('finished');
   };
 
   return (
@@ -28,15 +32,37 @@ const Body: React.FC<BodyProps> = ({ Messages }) => {
       <View style={{ backgroundColor: 'lightblue', padding: '1rem' }}>
         Columna 1
       </View>
-      <View style={{ padding: '1rem' }}>
-        Columna 2
-        {showInstructions && (
+
+      <View padding="1rem">
+        <Heading level={1} textAlign="center" marginBottom="1rem">
+          Hola Lorena
+        </Heading>
+
+        <View marginBottom="1rem">
+          <Divider orientation="horizontal" size="large" />
+        </View>
+
+        {currentStep === 'instructions' && (
           <Instructions
             Messages={Messages}
             onContinue={handleContinue}
           />
         )}
+
+        {currentStep === 'signature' && (
+          <SignaturePad
+            Messages={Messages}
+            onComplete={handleSignatureComplete}
+          />
+        )}
+
+        {currentStep === 'finished' && (
+          <Heading level={2} textAlign="center" marginTop="2rem">
+            ¡Firma guardada exitosamente!
+          </Heading>
+        )}
       </View>
+
       <View style={{ backgroundColor: 'lightcoral', padding: '1rem' }}>
         Columna 3
       </View>

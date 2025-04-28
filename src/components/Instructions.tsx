@@ -1,7 +1,6 @@
 import React from 'react';
 import {
     Button,
-    View,
     Heading,
     Message,
     Flex,
@@ -26,7 +25,7 @@ const Instructions: React.FC<AlertComponentProps> = ({
 }) => {
     return (
         <div>
-            <Heading level={3} style={{ textAlign: 'center', marginBottom: '1rem' }}>
+            <Heading level={2} style={{ textAlign: 'center', marginBottom: '1rem' }}>
                 {Messages.instructionsPage.title}
             </Heading>
 
@@ -81,11 +80,11 @@ const Instructions: React.FC<AlertComponentProps> = ({
                     )}
                 </Collection>
 
-                <View style={{ marginTop: '2rem', textAlign: 'center' }}>
+                <Flex direction="row" gap="1rem" marginTop="1rem" justifyContent="center">
                     <Button backgroundColor={Messages.buttonColor} variation="primary" onClick={onContinue}>
-                        {Messages.instructionsPage.accion}
+                        {Messages.instructionsPage.buttons.continue}
                     </Button>
-                </View>
+                </Flex>
             </Flex>
         </div>
     );
