@@ -12,4 +12,5 @@ export const channelFunction = defineFunction({
         GET_CHANEL_URL: process.env.GET_CHANEL_URL || "",
         SECRET_NAME: process.env.SECRET_NAME || ""
     },
+    entry: "./handler.ts",
 })
