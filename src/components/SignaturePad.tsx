@@ -39,20 +39,21 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
             setTrimmedDataURL(trimmed);
             setMessage(Messages.signaturePadPage.messages.success);
             setMessageType('info');
-            downloadSignature(trimmed);
+            // downloadSignature(trimmed);
             onComplete();
         }
     };
 
+    /* 
     const downloadSignature = (base64: string): void => {
         const link = document.createElement('a');
         link.href = base64;
-        console.log(trimmedDataURL);
-        /*link.download = `firma-${new Date().toISOString()}.png`;
+        link.download = `firma-${new Date().toISOString()}.png`;
         document.body.appendChild(link);
         link.click();
-        document.body.removeChild(link);*/
+        document.body.removeChild(link);
     };
+    */
 
     return (
         <Flex direction="column" gap="large" width="100%" maxWidth="800px" margin="auto">
@@ -73,10 +74,10 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
                 <SignatureCanvas
                     penColor="black"
                     canvasProps={{
-                        width: 0, // No establezcas el ancho fijo aquí
+                        width: 800, // Ajuste de ancho razonable
                         height: 200,
                         style: {
-                            width: '100%', // Aquí es clave
+                            width: '100%', // Se adapta al contenedor
                             height: '200px',
                             border: '2px dashed #cbd5e0',
                             borderRadius: '12px',
