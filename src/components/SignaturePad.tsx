@@ -37,6 +37,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
 
         if (trimmed) {
             setTrimmedDataURL(trimmed);
+            console.log('Trimmed Data URL:', trimmedDataURL);
             setMessage(Messages.signaturePadPage.messages.success);
             setMessageType('info');
             // downloadSignature(trimmed);
