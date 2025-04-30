@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import { Button, Heading, Flex, Message } from '@aws-amplify/ui-react';
 import { trimCanvas } from '../utils/trimCanvas';
@@ -14,6 +14,7 @@ interface SignatureCanvasExtended extends SignatureCanvas {
 
 const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => {
     const sigCanvas = useRef<SignatureCanvasExtended>(null!);
+    const canvasContainerRef = useRef<HTMLDivElement>(null);
     const [trimmedDataURL, setTrimmedDataURL] = useState<string | null>(null);
     const [message, setMessage] = useState<string>(Messages.signaturePadPage.description);
     const [messageType, setMessageType] = useState<'info' | 'error'>('info');
@@ -40,21 +41,28 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
             console.log('Trimmed Data URL:', trimmedDataURL);
             setMessage(Messages.signaturePadPage.messages.success);
             setMessageType('info');
-            // downloadSignature(trimmed);
             onComplete();
         }
     };
 
-    /* 
-    const downloadSignature = (base64: string): void => {
-        const link = document.createElement('a');
-        link.href = base64;
-        link.download = `firma-${new Date().toISOString()}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
-    */
+    useEffect(() => {
+        const canvas = sigCanvas.current.getCanvas();
+        const container = canvasContainerRef.current;
+
+        const resizeCanvas = () => {
+            if (container && canvas) {
+                const width = container.offsetWidth;
+                const height = 200;
+                canvas.width = width;
+                canvas.height = height;
+                sigCanvas.current.clear();
+            }
+        };
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        return () => window.removeEventListener('resize', resizeCanvas);
+    }, []);
 
     return (
         <Flex direction="column" gap="large" width="100%" maxWidth="800px" margin="auto">
@@ -71,14 +79,12 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ Messages, onComplete }) => 
                 wrap="wrap"
             />
 
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div ref={canvasContainerRef} style={{ width: '100%', overflow: 'hidden' }}>
                 <SignatureCanvas
                     penColor="black"
                     canvasProps={{
-                        width: 800, // Ajuste de ancho razonable
-                        height: 200,
                         style: {
-                            width: '100%', // Se adapta al contenedor
+                            width: '100%',
                             height: '200px',
                             border: '2px dashed #cbd5e0',
                             borderRadius: '12px',
